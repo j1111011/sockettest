@@ -110,7 +110,19 @@ void SocketTestWindow::StartListen()
 
 void SocketTestWindow::OnRecvData(QByteArray &array)
 {
-    g_thisClass->ui->m_teRecvData->setText(QString(array));
+    QString val = "";
+    if(g_thisClass->ui->m_cbHexView->isChecked())
+    {
+        for(int it = 0;it != array.size();++ it)
+        {
+            val += QString(" 0x%1 ").arg((int)array.at(it));
+        }
+    }
+    else
+    {
+        val = QString(array);
+    }
+    g_thisClass->ui->m_teRecvData->setText(val);
 }
 
 SocketTestWindow* SocketTestWindow::g_thisClass = NULL;

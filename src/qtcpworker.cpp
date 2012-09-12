@@ -40,6 +40,8 @@ bool QTCPWorker::startService()
 void QTCPWorker::newConnect()
 {
     m_tcpSocket = m_server.nextPendingConnection(); //得到每个连进来的socket
+    QVariant var = 1;
+    m_tcpSocket->setSocketOption(QAbstractSocket::LowDelayOption,var);
     QMessageBox::information(SocketTestWindow::g_thisClass,tr("提示"),tr("接收到新连接"));
     connect(m_tcpSocket,SIGNAL(readyRead()),this,SLOT(readMessage())); //有可读的信息，
     connect(m_tcpSocket,SIGNAL(disconnected()),this,SLOT(disConnected()));
