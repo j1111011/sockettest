@@ -1,6 +1,7 @@
 #include "qfilelog.h"
 #include "qconfig.h"
 #include <QDateTime>
+#include <QTextCodec>
 QFileLog::QFileLog()
     : file(QConfig::getArgument("log.file.name"))
 {
@@ -57,9 +58,9 @@ void QFileLog::log(const char *prefix, const char *data)
     QString buf = "";
     QDateTime cur;
     buf += cur.toString("yyyy-MM-dd hh:mm:ss ");
-    buf += prefix;
+    buf += QString().fromLocal8Bit(prefix);
     buf += " ";
-    buf += data;
+    buf += QString().fromLocal8Bit(data);
     buf += "\n";
     QByteArray xdata;
     xdata.append(buf);

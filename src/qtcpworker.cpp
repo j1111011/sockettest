@@ -1,6 +1,6 @@
 #include "qtcpworker.h"
 #include "qlogprovider.h"
-#include "qmessagebox.h"
+#include <QMessageBox>
 #include "sockettestwindow.h"
 QTCPWorker::QTCPWorker()
     : m_port(0),
@@ -42,7 +42,7 @@ void QTCPWorker::newConnect()
     m_tcpSocket = m_server.nextPendingConnection(); //得到每个连进来的socket
     QVariant var = 1;
     m_tcpSocket->setSocketOption(QAbstractSocket::LowDelayOption,var);
-    QMessageBox::information(SocketTestWindow::g_thisClass,tr("提示"),tr("接收到新连接"));
+    QMessageBox::information(SocketTestWindow::g_thisClass,tr("tips"),tr("accept new connection"));
     connect(m_tcpSocket,SIGNAL(readyRead()),this,SLOT(readMessage())); //有可读的信息，
     connect(m_tcpSocket,SIGNAL(disconnected()),this,SLOT(disConnected()));
 }
@@ -55,7 +55,7 @@ void QTCPWorker::readMessage()
 
 void QTCPWorker::disConnected()
 {
-    QMessageBox::information(SocketTestWindow::g_thisClass,tr("提示"),tr("连接已断开"));
+    QMessageBox::information(SocketTestWindow::g_thisClass,tr("tips"),tr("client disconnected"));
 }
 
 void QTCPWorker::setOnRecv(SocketBase::OnRecvData recv)

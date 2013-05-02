@@ -5,10 +5,12 @@
 #-------------------------------------------------
 
 QT       += core gui network
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets webkitwidgets
 
 TARGET = SocketTest
 TEMPLATE = app
 
+TRANSLATIONS = socket-test.cn.ts
 
 SOURCES += main.cpp\
         sockettestwindow.cpp \

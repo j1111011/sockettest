@@ -1,9 +1,9 @@
-#include <QMessageBox>
 #include "sockettestwindow.h"
 #include "ui_sockettestwindow.h"
 #include "qudpworker.h"
 #include "qtcpworker.h"
 #include "qlogprovider.h"
+#include <QMessageBox>
 SocketTestWindow::SocketTestWindow(QWidget *parent) :
     QDialog(parent),
     m_tcpEnable(false),
@@ -78,7 +78,7 @@ void SocketTestWindow::StartListen()
     QString address = ui->m_leAddress->text();
     if( port < 0 )
     {
-        QMessageBox::critical(this,"错误","错误的端口号");
+        QMessageBox::critical(this,tr("error"),tr("invalid port"));
     }
     if(m_udpEnable)
     {
@@ -104,7 +104,7 @@ void SocketTestWindow::StartListen()
     }
     else
     {
-        QMessageBox::critical(this,"错误","无法启动服务，请检查端口及地址");
+        QMessageBox::critical(this,tr("error"),tr("can't start server"));
     }
 }
 
@@ -144,12 +144,14 @@ void SocketTestWindow::on_m_pbSend_clicked()
     {
         if(m_tcpEnable)
         {
-            m_socketClient->write(array);
+            if(m_socketClient)
+                m_socketClient->write(array);
         }
         else
         {
             QUdpSocket* udpSocket = dynamic_cast<QUdpSocket*>(m_socketClient);
-            udpSocket->write(array);
+            if(udpSocket)
+                udpSocket->write(array);
         }
 
     }
@@ -198,7 +200,7 @@ void SocketTestWindow::connectedToHost()
 
 void SocketTestWindow::disConnected()
 {
-    QMessageBox::information(this,tr("提示"),tr("连接已断开"));
+    QMessageBox::information(this,tr("tips"),tr("client disconnected"));
     ui->m_pbConnect->setEnabled(true);
     ui->m_pbListen->setEnabled(true);
     ui->m_rbUdpEnable->setEnabled(true);

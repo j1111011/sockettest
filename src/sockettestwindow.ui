@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>套接字-测试工具</string>
+   <string>sock-test</string>
   </property>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>发送数据</string>
+    <string>send data</string>
    </property>
   </widget>
   <widget class="QTextEdit" name="m_teSendData">
@@ -46,7 +46,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>接收数据</string>
+    <string>recv data</string>
    </property>
   </widget>
   <widget class="QTextEdit" name="m_teRecvData">
@@ -79,7 +79,7 @@
     <item row="0" column="1">
      <widget class="QLabel" name="label_5">
       <property name="text">
-       <string>地址：</string>
+       <string>address</string>
       </property>
      </widget>
     </item>
@@ -93,14 +93,14 @@
     <item row="0" column="3">
      <widget class="QPushButton" name="m_pbListen">
       <property name="text">
-       <string>监听(&amp;L)</string>
+       <string>listen(&amp;L)</string>
       </property>
      </widget>
     </item>
     <item row="0" column="4">
      <widget class="QPushButton" name="m_pbSend">
       <property name="text">
-       <string>发送(&amp;S)</string>
+       <string>send(&amp;S)</string>
       </property>
      </widget>
     </item>
@@ -114,7 +114,7 @@
     <item row="1" column="1">
      <widget class="QLabel" name="label">
       <property name="text">
-       <string>端口：</string>
+       <string>port:</string>
       </property>
      </widget>
     </item>
@@ -128,14 +128,14 @@
     <item row="1" column="3">
      <widget class="QPushButton" name="m_pbConnect">
       <property name="text">
-       <string>连接(&amp;C)</string>
+       <string>connect(&amp;C)</string>
       </property>
      </widget>
     </item>
     <item row="1" column="4">
      <widget class="QPushButton" name="m_pbDisconnect">
       <property name="text">
-       <string>断开(&amp;D)</string>
+       <string>disconnect(&amp;D)</string>
       </property>
      </widget>
     </item>
@@ -151,7 +151,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>十六进制显示</string>
+    <string>hex display</string>
    </property>
   </widget>
  </widget>

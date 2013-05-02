@@ -6,7 +6,7 @@
 #ifndef QUDPWORKER_H
 #define QUDPWORKER_H
 
-#include <Qt/qudpsocket.h>
+#include <QUdpSocket>
 #include "socketbase.h"
 
 class QUdpWorker : public QObject,public SocketBase

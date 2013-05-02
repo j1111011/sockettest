@@ -6,8 +6,8 @@
 #ifndef QTCPWORKER_H
 #define QTCPWORKER_H
 
-#include <Qt/qtcpserver.h>
-#include <Qt/qtcpsocket.h>
+#include <QTcpServer>
+#include <QTcpSocket>
 #include <stdlib.h>
 #include "socketbase.h"
 class QTCPWorker : public QObject,public SocketBase
